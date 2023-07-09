@@ -1,6 +1,6 @@
 from collections.abc import Iterator
 import itertools
-from typing import Sequence
+from typing import Sequence, Dict
 
 from .card import Card
 
@@ -39,7 +39,7 @@ class LookupTable:
     MAX_PAIR: int            = 6185
     MAX_HIGH_CARD: int       = 7462
 
-    MAX_TO_RANK_CLASS: dict[int, int] = {
+    MAX_TO_RANK_CLASS: Dict[int, int] = {
         MAX_ROYAL_FLUSH: 0,
         MAX_STRAIGHT_FLUSH: 1,
         MAX_FOUR_OF_A_KIND: 2,
@@ -52,7 +52,7 @@ class LookupTable:
         MAX_HIGH_CARD: 9
     }
 
-    RANK_CLASS_TO_STRING: dict[int, str] = {
+    RANK_CLASS_TO_STRING: Dict[int, str] = {
         0: "Royal Flush",
         1: "Straight Flush",
         2: "Four of a Kind",
@@ -70,8 +70,8 @@ class LookupTable:
         Calculates lookup tables
         """
         # create dictionaries
-        self.flush_lookup: dict[int, int] = {}
-        self.unsuited_lookup: dict[int, int] = {}
+        self.flush_lookup: Dict[int, int] = {}
+        self.unsuited_lookup: Dict[int, int] = {}
 
         # create the lookup table in piecewise fashion
         # this will call straights and high cards method,
@@ -255,7 +255,7 @@ class LookupTable:
                 self.unsuited_lookup[product] = rank
                 rank += 1
 
-    def write_table_to_disk(self, table: dict[int, int], filepath: str) -> None:
+    def write_table_to_disk(self, table: Dict[int, int], filepath: str) -> None:
         """
         Writes lookup table to disk
         """
@@ -263,7 +263,7 @@ class LookupTable:
             for prime_prod, rank in table.items():
                 f.write(str(prime_prod) + "," + str(rank) + '\n')
 
-    def get_lexographically_next_bit_sequence(self, bits: int) -> Iterator[int]:
+    def get_lexographically_next_bit_sequence(self, bits: int) -> Sequence[int]:
         """
         Bit hack from here:
         http://www-graphics.stanford.edu/~seander/bithacks.html#NextBitPermutation

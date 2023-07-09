@@ -1,4 +1,4 @@
-from typing import Sequence
+from typing import Sequence, List, Dict
 
 class Card:
     """
@@ -31,11 +31,11 @@ class Card:
     STR_RANKS: str = '23456789TJQKA'
     STR_SUITS: str = 'shdc'
     INT_RANKS: range = range(13)
-    PRIMES: list[int] = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
+    PRIMES: List[int] = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
 
     # conversion from string => int
-    CHAR_RANK_TO_INT_RANK: dict[str, int] = dict(zip(list(STR_RANKS), INT_RANKS))
-    CHAR_SUIT_TO_INT_SUIT: dict[str, int] = {
+    CHAR_RANK_TO_INT_RANK: Dict[str, int] = dict(zip(list(STR_RANKS), INT_RANKS))
+    CHAR_SUIT_TO_INT_SUIT: Dict[str, int] = {
         's': 1,  # spades
         'h': 2,  # hearts
         'd': 4,  # diamonds
@@ -48,14 +48,14 @@ class Card:
     INT_SUIT_TO_CHAR_SUIT: str = 'xshxdxxxc'
 
     # for pretty printing
-    PRETTY_SUITS: dict[int, str] = {
+    PRETTY_SUITS: Dict[int, str] = {
         1: chr(9824),   # spades
         2: chr(9829),   # hearts
         4: chr(9830),   # diamonds
         8: chr(9827)    # clubs
     }
 
-    SUIT_COLORS: dict[int, str] = {
+    SUIT_COLORS: Dict[int, str] = {
         2: "red",
         4: "blue",
         8: "green"
@@ -104,7 +104,7 @@ class Card:
         return card_int & 0x3F
 
     @staticmethod
-    def hand_to_binary(card_strs: Sequence[str]) -> list[int]:
+    def hand_to_binary(card_strs: Sequence[str]) -> List[int]:
         """
         Expects a list of cards as strings and returns a list
         of integers of same length corresponding to those strings. 

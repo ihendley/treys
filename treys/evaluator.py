@@ -1,5 +1,5 @@
 import itertools
-from typing import Sequence
+from typing import Sequence, List
 
 from .card import Card
 from .lookup import LookupTable
@@ -29,7 +29,7 @@ class Evaluator:
             7: self._seven
         }
 
-    def evaluate(self, hand: list[int], board: list[int]) -> int:
+    def evaluate(self, hand: List[int], board: List[int]) -> int:
         """
         This is the function that the user calls to get a hand rank. 
 
@@ -129,7 +129,7 @@ class Evaluator:
         """
         return float(hand_rank) / float(LookupTable.MAX_HIGH_CARD)
 
-    def hand_summary(self, board: list[int], hands: list[list[int]]) -> None:
+    def hand_summary(self, board: List[int], hands: List[List[int]]) -> None:
         """
         Gives a sumamry of the hand with ranks as time proceeds. 
 
@@ -189,7 +189,7 @@ class PLOEvaluator(Evaluator):
 
     HAND_LENGTH = 4
 
-    def evaluate(self, hand: list[int], board: list[int]) -> int:
+    def evaluate(self, hand: List[int], board: List[int]) -> int:
         minimum = LookupTable.MAX_HIGH_CARD
 
         for hand_combo in itertools.combinations(hand, 2):
