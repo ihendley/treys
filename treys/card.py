@@ -41,6 +41,7 @@ class Card:
         'd': 4,  # diamonds
         'c': 8,  # clubs
         '\u2660': 1, # spades (unicode)
+        '\u2665': 2, # hearts (unicode)
         '\u2764': 2, # hearts (unicode)
         '\u2666': 4, # diamonds (unicode)
         '\u2663': 8, # clubs (unicode)
