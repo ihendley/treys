@@ -9,7 +9,7 @@ setup(
     name='treys',
     version='0.1.8',
     description='treys is a pure Python poker hand evaluation library',
-    long_description=open('README.rst').read(),
+    long_description=open('README.rst', encoding='utf-8').read(),
     author='Will Drevo, Mark Saindon, Imran Hendley',
     url='https://github.com/ihendley/treys',
     license='MIT',
