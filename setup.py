@@ -14,6 +14,7 @@ setup(
     url='https://github.com/ihendley/treys',
     license='MIT',
     packages=find_packages(include=['treys', 'treys.*']),
+    python_requires='>=3.9',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
